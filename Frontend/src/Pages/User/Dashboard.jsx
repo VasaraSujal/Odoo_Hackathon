@@ -46,9 +46,7 @@ const features = [
   },
 ];
 
-import { useNavigate } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import MainHeader from '../../Components/MainHeader'
+
 
 
 const Dashboard = () => {
@@ -58,15 +56,7 @@ const Dashboard = () => {
 
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white  py-12">
         <MainHeader/>
-      <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 mt-8">
 
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white px-6 py-12">
-
-      <MainHeader />
-
-      {/* Hero Section */}
-
-        <MainHeader/>
 
       <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
 
@@ -97,8 +87,6 @@ const Dashboard = () => {
         {/* Right Image */}
         <div className="md:w-1/2">
           <img
-
-            src="/assets/skillswap-hero.svg"
 
             src="/assets/skillswap-hero.svg" // Replace with your own image or asset
 
@@ -143,6 +131,7 @@ const Dashboard = () => {
 
 
     </div>
+
   );
 };
 
