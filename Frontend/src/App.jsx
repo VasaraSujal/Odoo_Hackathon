@@ -5,6 +5,8 @@ import './App.css'
 
 import { BrowserRouter } from "react-router-dom";
 import Dashboard from './Pages/User/Dashboard'
+import Login from './Pages/Login/Login'
+import Register from './Pages/Login/Register'
 
 
 import Dashboard from './Pages/User/Dashboard'
@@ -15,7 +17,9 @@ function App() {
 
   return (
     <>
-     <Dashboard/>
+     {/* <Dashboard/> */}
+     {/* <Login/> */}
+     <Register/>
     </>
   ) 
 }
