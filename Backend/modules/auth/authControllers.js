@@ -9,8 +9,8 @@ const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 const login = async (req, res) => {
   const db = getDB();
   const { username, password, id } = req.body;
-console.log('Login attempt:', { username, id,password });
-  if (!username || !password || !id)
+  console.log('Login attempt:', { username, password });
+  if (!username || !password )
     return res.status(400).json({ message: 'All fields required' });
  
   const user = await db.collection('users').findOne({ username });
@@ -19,7 +19,7 @@ console.log('Login attempt:', { username, id,password });
   console.log('Password we get is',password)
   const isMatch = password ? password==user.password: false;
   console.log('Password match:', isMatch);
-  if (!user || !isMatch || user.user_id !== id)
+  if (!user || !isMatch )
     return res.status(401).json({ message: 'Invalid credentials' });
 
   const token = jwt.sign(
@@ -37,7 +37,6 @@ console.log('Login attempt:', { username, id,password });
     message: '✅ Login successful',
     token,
     user: {
-      id: user.user_id,
       username: user.username,
       email: user.email,
       role: user.role.toLowerCase(),
