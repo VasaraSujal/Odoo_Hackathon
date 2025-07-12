@@ -8,15 +8,15 @@ const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 
 const login = async (req, res) => {
   const db = getDB();
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  console.log('Login attempt:', { username, password });
+  console.log('Login attempt:', { email, password });
 
-  if (!username || !password) {
+  if (!email || !password) {
     return res.status(400).json({ message: 'All fields required' });
   }
 
-  const user = await db.collection('users').findOne({ username });
+  const user = await db.collection('users').findOne({ email });
 
   console.log('User found:', user);
 
