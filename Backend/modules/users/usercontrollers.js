@@ -1,58 +1,59 @@
 const { getDB } = require('../../config/db');
-const { ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
 
 const addUser = async (req, res) => {
   try {
     const db = getDB();
     const {
-      name,
-      id,
-      address,
-      bankAccount,
-      mobile,
+      username,
       email,
       password,
-      role,
-      salary,
-      employmentType,
-      attendanceType,
+      location,
+      mobile,
+      profilePhoto,
+      isPublic,
+      role
     } = req.body;
 
     // Basic validation
-    if (!name || !id || !email || !password || !role) {
+    if (!username || !email || !password || !location || !mobile) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
 
-    // Check for duplicate email or ID
+    // Check for duplicate email or username
     const existingUser = await db.collection('users').findOne({
-      $or: [{ email }, { user_id: id }],
+      $or: [{ email }, { username }],
     });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
+    //created at timing
+      const utcNow = new Date();
+      const istOffset = 5.5 * 60 * 60 * 1000; // IST offset in milliseconds
+  const istNow = new Date(utcNow.getTime() + istOffset);
+
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const result = await db.collection('users').insertOne({
-      username: name,
-      user_id: id,
-      address,
-      bankAccount,
-      mobile,
+    // Prepare user document
+    const newUser = {
+      username,
       email,
       password: hashedPassword,
-      employee_role: role,
-      salary,
-      employmentType,
-      attendanceType,
-      role: 'HR',
-    });
+      location,
+      mobile,
+      profilePhoto: profilePhoto || '',
+      isPublic: typeof isPublic === 'boolean' ? isPublic : true,
+      role,
+      createdAt: istNow
+    };
+
+    const result = await db.collection('users').insertOne(newUser);
 
     res.status(201).json({
       message: 'User added successfully',
-      userId: result.insertedId,
+      userId: result.insertedId
     });
   } catch (error) {
     console.error('Error adding user:', error);
@@ -60,4 +61,4 @@ const addUser = async (req, res) => {
   }
 };
 
-module.exports = {addUser};
+module.exports = { addUser };
