@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useNavigate, Link } from "react-router-dom";
 import {
   Users,
@@ -45,14 +46,23 @@ const features = [
   },
 ];
 
+import { useNavigate } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import MainHeader from '../../Components/MainHeader'
+
+
 const Dashboard = () => {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white px-6 py-12">
+
       <MainHeader />
 
       {/* Hero Section */}
+
+        <MainHeader/>
+
       <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
         {/* Left Content */}
         <div className="md:w-1/2 text-center md:text-left">
@@ -81,12 +91,17 @@ const Dashboard = () => {
         {/* Right Image */}
         <div className="md:w-1/2">
           <img
+
             src="/assets/skillswap-hero.svg"
+
+            src="/assets/skillswap-hero.svg" // Replace with your own image or asset
+
             alt="Skill Swap Illustration"
             className="w-full max-w-md mx-auto drop-shadow-lg"
           />
         </div>
       </div>
+
 
       {/* Features Grid */}
       <div className="w-full px-6 sm:px-12 py-20">
@@ -119,6 +134,8 @@ const Dashboard = () => {
           Join SkillSwap Now
         </Link>
       </div>
+
+
     </div>
   );
 };
