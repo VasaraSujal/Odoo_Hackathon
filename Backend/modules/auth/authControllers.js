@@ -17,7 +17,7 @@ const login = async (req, res) => {
   console.log('User found:', user);
   console.log('user password is',user.password)
   console.log('Password we get is',password)
-  const isMatch = password ? password==user.password: false;
+  const isMatch = await bcrypt.compare(password, user.password);
   console.log('Password match:', isMatch);
   if (!user || !isMatch )
     return res.status(401).json({ message: 'Invalid credentials' });
