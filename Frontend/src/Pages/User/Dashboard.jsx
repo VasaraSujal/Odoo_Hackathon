@@ -7,13 +7,13 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white px-6 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white  py-12">
         <MainHeader/>
-      <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
+      <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 mt-8">
         {/* Left Content */}
         <div className="md:w-1/2 text-center md:text-left">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-            Swap Skills. <br /> Grow Together.
+            Swap Skills, <br /> Grow Together.
           </h1>
           <p className="text-gray-600 text-lg mb-8">
             Skill Swap is a platform where you can offer your skills and request others in return. Build connections. Learn faster. Share your knowledge.
