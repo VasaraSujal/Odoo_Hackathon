@@ -8,7 +8,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white  py-12">
-        <MainHeader/>
+      <MainHeader/>
       <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 mt-8">
         {/* Left Content */}
         <div className="md:w-1/2 text-center md:text-left">
