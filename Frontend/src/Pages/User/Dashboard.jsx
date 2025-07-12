@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   Users,
   Repeat,
@@ -8,8 +8,9 @@ import {
   CalendarClock,
   User,
   MailCheck,
+  ArrowRight
 } from "lucide-react";
-import Header from "../../Components/MainHeader";
+import MainHeader from "../../Components/MainHeader";
 
 const features = [
   {
@@ -44,33 +45,46 @@ const features = [
   },
 ];
 
-const GuestDashboard = () => {
+const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#F9FAFB", color: "#1F2937" }}>
-        <Header />
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-white px-6 py-12">
+      <MainHeader />
+
       {/* Hero Section */}
-      <div className="w-full py-16 px-6 sm:px-12 text-center border-b border-slate-200" style={{ backgroundColor: "#FFFFFF" }}>
-        <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight" style={{ color: "#4F46E5" }}>
-          Welcome to SkillSwap
-        </h1>
-        <p className="text-lg max-w-3xl mx-auto" style={{ color: "#4B5563" }}>
-          Discover a trusted community where skills are exchanged, not sold. Build real connections and learn faster.
-        </p>
-        <div className="mt-6 flex justify-center gap-4 flex-wrap">
-          <Link
-            to="/register"
-            className="px-6 py-3 rounded-full text-lg text-white transition shadow"
-            style={{ backgroundColor: "#4F46E5" }}
-          >
-            Get Started
-          </Link>
-          <Link
-            to="/login"
-            className="px-6 py-3 rounded-full text-lg border transition"
-            style={{ borderColor: "#4F46E5", color: "#4F46E5", backgroundColor: "#FFFFFF" }}
-          >
-            Login
-          </Link>
+      <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
+        {/* Left Content */}
+        <div className="md:w-1/2 text-center md:text-left">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+            Swap Skills. <br /> Grow Together.
+          </h1>
+          <p className="text-gray-600 text-lg mb-8">
+            Skill Swap is a platform where you can offer your skills and request others in return. Build connections. Learn faster. Share your knowledge.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <button
+              onClick={() => navigate("/register")}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl text-lg shadow-md flex items-center gap-2 transition"
+            >
+              Get Started <ArrowRight className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => navigate("/browse")}
+              className="border border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-2xl text-lg transition"
+            >
+              Browse Skills
+            </button>
+          </div>
+        </div>
+
+        {/* Right Image */}
+        <div className="md:w-1/2">
+          <img
+            src="/assets/skillswap-hero.svg"
+            alt="Skill Swap Illustration"
+            className="w-full max-w-md mx-auto drop-shadow-lg"
+          />
         </div>
       </div>
 
@@ -109,4 +123,4 @@ const GuestDashboard = () => {
   );
 };
 
-export default GuestDashboard;
+export default Dashboard;
