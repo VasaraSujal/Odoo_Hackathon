@@ -17,7 +17,7 @@ const Register = () => {
       <div className="w-full md:w-1/2 flex items-center justify-center p-6">
         <div className="max-w-md w-full bg-white bg-opacity-70 backdrop-blur-lg p-8 rounded-xl shadow-2xl space-y-6 animate-fadeIn">
           <h2 className="text-4xl font-extrabold text-indigo-600 text-center">
-            Create Account ✨
+            Create Account
           </h2>
           <p className="text-gray-700 text-center">
             Sign up for <span className="font-semibold">SkillSwap</span> and grow your skills
